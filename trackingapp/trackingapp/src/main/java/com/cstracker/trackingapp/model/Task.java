@@ -1,7 +1,7 @@
-package com.cstracker.trackingapp.controller;
+package com.cstracker.trackingapp.model;
 
 import lombok.AllArgsConstructor;
-import lombok.*;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -38,31 +38,20 @@ public class Task {
     @ManyToOne(cascade = CascadeType.PERSIST)
     private User user;
 
-    public void setTitle(String title) {
-    }
 
-    public void setDescription(String description) {
-    }
-
-    public void setPriority(String priority) {
-    }
-
-    public void setCategory(String category) {
-    }
-
-    public void setDateadded(Instant date_added) {
-    }
-
-    public void setStatus(String status) {
-    }
-
-  
-    public void setCreatedBy(String created_by) {
-    }
-
-    public void setAssignedTo(String assigned_to) {
+    public void setDateadded(Instant add_date) {
+        this.date_added = date_added;
     }
 
     public void setDuedate(String due_date) {
+        this.due_date = due_date;
+    }
+
+    public void setCreatedBy(String created_by) {
+        this.created_by=created_by;
+    }
+
+    public void setAssignedTo(String assigned_to) {
+        this.assigned_to = assigned_to;
     }
 }

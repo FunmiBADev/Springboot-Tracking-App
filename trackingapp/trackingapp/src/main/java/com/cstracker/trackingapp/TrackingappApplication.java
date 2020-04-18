@@ -1,7 +1,7 @@
 package com.cstracker.trackingapp;
 
-import com.cstracker.trackingapp.controller.Task;
-import com.cstracker.trackingapp.controller.User;
+import com.cstracker.trackingapp.model.Task;
+import com.cstracker.trackingapp.model.User;
 import com.cstracker.trackingapp.repository.TaskRepository;
 import com.cstracker.trackingapp.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -31,9 +31,9 @@ public class TrackingappApplication {
 					"2020-03-30T17:00:00.000Z","ctester","atester");
 			User user1 = createUser(userRepo,"Funmi", "Tester", "ftester",
 					"ftester@email.com","test123", true, false );
-			User user2 = createUser(userRepo,"Chloe", "Tester", "ctester",
+			User user2 = createUser(userRepo,"Chloe", "Tester2", "ctester",
 					"ctester@email.com","test234", true, true );
-			User user3 = createUser(userRepo,"Ariane", "Tester", "atester",
+			User user3 = createUser(userRepo,"Ariane", "Tester3", "atester",
 					"atester@email.com","test345", true, false );
 		};
 	}

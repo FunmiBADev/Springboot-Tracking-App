@@ -1,11 +1,11 @@
-package com.cstracker.trackingapp.controller;
+package com.cstracker.trackingapp.model;
 
 import lombok.AllArgsConstructor;
-import lombok.*;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Set;
+
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -25,25 +25,14 @@ public class User {
     private boolean scrum_master;
 
     public void setFirstName(String first_name) {
+        this.first_name = first_name;
     }
 
     public void setLastName(String last_name) {
+        this.last_name = last_name;
     }
-
-    public void setUsername(String username) {
-    }
-
-    public void setEmail(String email) {
-    }
-
-    public void setPassword(String password) {
-    }
-
-
 
     public void setScrumMaster(boolean scrum_master) {
-    }
-
-    public void setAdmin(boolean admin) {
+        this.scrum_master = scrum_master;
     }
 }
