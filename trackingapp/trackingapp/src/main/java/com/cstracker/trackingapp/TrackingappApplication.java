@@ -63,9 +63,9 @@ public class TrackingappApplication {
 		task.setDescription(description);
 		task.setPriority(priority);
 		task.setCategory(category);
-		task.setDateadded(add_date);
+		task.setDate_added(add_date);
 		task.setStatus(status);
-		task.setDuedate(due_date);
+		task.setDueDate(due_date);
 		task.setCreatedBy(created_by);
 		task.setAssignedTo(assigned_to);
 
