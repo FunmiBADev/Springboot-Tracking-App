@@ -30,7 +30,7 @@ public class TackController {
     }
 
 //    Search task by id (can repeat by search by username, status, category, priority)
-    @GetMapping("/search_task/{task_id}")
+    @GetMapping("/task/{task_id}")
     ResponseEntity<?> getCategory(@PathVariable Long task_id){
         Optional<Task> task = taskRepo.findById(task_id);
         return task.map(response -> ResponseEntity.ok().body(response))
@@ -38,11 +38,26 @@ public class TackController {
 
     }
 
-    @PostMapping("/add_task")
+    @PostMapping("/task")
     ResponseEntity<Task> createTask(@Valid @RequestBody Task task) throws URISyntaxException {
         Task result= taskRepo.save(task);
-        return ResponseEntity.created(new URI("/api/dashboard" + result.getTask_id())).body(result);
+        return ResponseEntity.created(new URI("/api/task" + result.getTask_id())).body(result);
 
+    }
+
+
+    @PutMapping("/task /{task_id}")
+    ResponseEntity<Task> updateCategory(@Valid @RequestBody Task task){
+        Task result= taskRepo.save(task);
+        return ResponseEntity.ok().body(result);
+    }
+
+
+
+    @DeleteMapping("/task/{task_id}")
+    ResponseEntity<?> deleteTask(@PathVariable Long task_id){
+        taskRepo.deleteById(task_id);
+        return ResponseEntity.ok().build();
     }
 
 
