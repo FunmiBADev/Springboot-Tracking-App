@@ -1,31 +1,19 @@
-import React, { Component } from "react";
-import AppNav from "./AppNav";
+import React, { Component } from 'react';
+import './App.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import {Link} from 'react-router-dom';
 
-class Cretae_task extends Component {
-  state = {
+class createTaskForm extends Component {
+  state = { 
 
-  };
+   }
 
-  render() {
-    return (
+  render() { 
+    return ( 
       <div>
-        <AppNav />
-        {/* <h2
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100vh",
-          }}
-        >
-        SDLC Tracking Application - Cretae Task
-        </h2> */}
- <container>
+        <container>
           <form>
 
           <Form.Group controlId="category">
@@ -70,19 +58,17 @@ class Cretae_task extends Component {
           </Form.Group>
 
           <Form.Group>
-            <Button variant="danger" tag={Link} to="/dashboard" >Cancel</Button>{' '}
+            <Button variant="danger" type="submit" >Cancel</Button>{' '}
             <Button variant="warning" type="reset" >Reset</Button>{' '}
             <Button variant="primary" type="submit" >Add Task</Button>
           </Form.Group>
           
-  
 
           </form>
         </container>
-
       </div>
-    );
+     );
   }
 }
-
-export default Cretae_task;
+ 
+export default createTaskForm;
