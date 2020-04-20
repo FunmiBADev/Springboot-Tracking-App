@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Moment from 'react-moment';
 
 // import App from './App'; //this points to [react/src/app.js]
 import Task from "./Task"
