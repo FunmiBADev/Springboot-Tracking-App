@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
-// import Table from 'react-bootstrap/Table';
-import { Table,Container,Input,Button,Label, FormGroup, Form} from 'reactstrap';
+import Table from 'react-bootstrap/Table';
+// import { Table,Container,Input,Button,Label, FormGroup, Form} from 'reactstrap';
+import { Container,Button} from 'reactstrap';
 import Moment from 'react-moment';
+import AppNav from './AppNav';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
+import './App.css';
+import {Link} from 'react-router-dom';
+
 
 class Task extends Component {
     //state internal/private storage of components
@@ -14,21 +21,25 @@ class Task extends Component {
     
     // sync : send request and wait for response 
     // async : send request and don't have to wait 
+		
+
 
     async componentDidMount(){
         const response = await fetch('/api/dashboard')
         const body = await response.json();
-        this.setState({Tasks : body, isloading : false});
+				this.setState({Tasks : body, isloading : false});
+
     }
 
     render() {   
-        const {Tasks, isloading} = this.state;
+				const {Tasks, isloading} = this.state;
+				
         if(isloading)
             return (<div> Loading...</div>);
 
            
 						let rows =  
-            Tasks.map( task =>
+						Tasks.map( task =>
                 <tr key={task.task_id}>
                   <td> {task.title}</td>
                   <td> {task.description}</td>
@@ -39,8 +50,10 @@ class Task extends Component {
                  	<td> {task.assigned_to}</td>
 									<td><Moment date={task.date_added} format="YYYY/MM/DD"/></td>
                   <td> {task.due_date}</td>
-                  <td><Button size="sm" color="danger" onClick={() => this.remove(task.task_id)}>Delete</Button></td>
-      
+                  <td><Button size="sm" color="danger" onClick={() => this.remove(task.task_id)}>Delete</Button>
+											{''}
+											<Button size="sm" color="danger" onClick={() => this.edit(task.task_id)}>Edit</Button></td>
+
                 </tr>
       
       
@@ -50,11 +63,13 @@ class Task extends Component {
         return ( 
 
 					<div>
+						 <AppNav/>
 
+						
             {''}
             <Container>
-              <h3>Expense List</h3>
-              <Table className="mt-4">
+              <h3>All tasks dashboard</h3>
+              <Table striped bordered hover size="sm">
               <thead>
                 <tr>
 									<th width="10%">Title</th>
@@ -66,7 +81,7 @@ class Task extends Component {
                   <th> Assigned to</th>
                   <th> Date added</th>
                   <th width="10%">Due date</th>
-									<th>Action</th>
+									<th> Action</th>
                 </tr>
               </thead>
               <tbody>
