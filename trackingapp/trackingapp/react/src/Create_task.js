@@ -15,16 +15,6 @@ class Cretae_task extends Component {
     return (
       <div>
         <AppNav />
-        {/* <h2
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100vh",
-          }}
-        >
-        SDLC Tracking Application - Cretae Task
-        </h2> */}
  <container>
           <form>
 
@@ -70,7 +60,7 @@ class Cretae_task extends Component {
           </Form.Group>
 
           <Form.Group>
-            <Button variant="danger" tag={Link} to="/dashboard" >Cancel</Button>{' '}
+            <Button variant="danger" href="/dashboard" >Cancel</Button>{' '}
             <Button variant="warning" type="reset" >Reset</Button>{' '}
             <Button variant="primary" type="submit" >Add Task</Button>
           </Form.Group>
