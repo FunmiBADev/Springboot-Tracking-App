@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {Table} from 'react-bootstrap/Table';
 
 function App() {
   return (
