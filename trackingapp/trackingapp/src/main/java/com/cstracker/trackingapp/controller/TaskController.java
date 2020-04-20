@@ -15,7 +15,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 
-public class TackController {
+public class TackController { // why is it "TackController"? (TaskController?)
     private TaskRepository taskRepo;
 
     public TackController(TaskRepository taskRepo) {
@@ -25,7 +25,7 @@ public class TackController {
 
     @GetMapping("/dashboard")
     Collection<Task> tasks(){
-        return taskRepo.findAll();
+        return taskRepo.findAll(); //findAll is a JPA method
 //        select all from tasks
     }
 
