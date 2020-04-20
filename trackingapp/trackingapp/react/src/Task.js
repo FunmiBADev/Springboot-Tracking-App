@@ -32,6 +32,7 @@ class Task extends Component {
                         // the div id is for iteration
                         <div id={task.task_id}> 
                             {task.title}
+                            {task.description}
                         </div>
                     )
                 }
