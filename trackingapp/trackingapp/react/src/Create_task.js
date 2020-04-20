@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import AppNav from "./AppNav";
 
-class Home extends Component {
+class Cretae_task extends Component {
   state = {};
 
   render() {
@@ -16,11 +16,11 @@ class Home extends Component {
             height: "100vh",
           }}
         >
-          Welcome to SDLC Tracking Application!
+        SDLC Tracking Application - Cretae Task
         </h2>
       </div>
     );
   }
 }
 
-export default Home;
+export default Cretae_task;

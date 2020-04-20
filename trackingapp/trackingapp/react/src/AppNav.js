@@ -15,7 +15,10 @@ class AppNav extends Component {
                     <NavLink href="/">Home</NavLink>
                   </NavItem>
                   <NavItem>
-                    <NavLink href="/task">Create Task</NavLink>
+                    <NavLink href="/create_task">Create Task</NavLink>
+                  </NavItem>
+                  <NavItem>
+                    <NavLink href="/dashboard">All Tasks</NavLink>
                   </NavItem>
                   <NavItem>
                     <NavLink href="/my_dashboard">My Dashboard</NavLink>

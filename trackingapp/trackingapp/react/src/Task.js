@@ -1,99 +1,100 @@
-import React, { Component } from 'react';
-import Table from 'react-bootstrap/Table';
+import React, { Component } from "react";
+import Table from "react-bootstrap/Table";
 // import { Table,Container,Input,Button,Label, FormGroup, Form} from 'reactstrap';
-import { Container,Button} from 'reactstrap';
-import Moment from 'react-moment';
-import AppNav from './AppNav';
-import DatePicker from 'react-datepicker';
+import { Container, Button } from "reactstrap";
+import Moment from "react-moment";
+import AppNav from "./AppNav";
+import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import './App.css';
-import {Link} from 'react-router-dom';
-
+import "./App.css";
+import { Link } from "react-router-dom";
 
 class Task extends Component {
-    //state internal/private storage of components
-    state = {
-        isloading : true,
-        Tasks : []
-      } 
+  //state internal/private storage of components
+  state = {
+    isloading: true,
+    Tasks: [],
+  };
 
-    // in charge of processing the js file and return as the export in the last line
+  // in charge of processing the js file and return as the export in the last line
+
+  // sync : send request and wait for response
+  // async : send request and don't have to wait
+
+  
+  async componentDidMount() {
+    const response = await fetch("/api/dashboard");
+    const body = await response.json();
+    this.setState({ Tasks: body, isloading: false });
     
-    // sync : send request and wait for response 
-    // async : send request and don't have to wait 
-		
+  }
 
+  render() {
+    const { Tasks, isloading } = this.state;
 
-    async componentDidMount(){
-        const response = await fetch('/api/dashboard')
-        const body = await response.json();
-				this.setState({Tasks : body, isloading : false});
+    if (isloading) return <div> Loading...</div>;
 
-    }
+    let rows = Tasks.map((task) => (
+      <tr key={task.task_id}>
+        <td> {task.title}</td>
+        <td> {task.description}</td>
+        <td> {task.category}</td>
+        <td> {task.priority}</td>
+        <td> {task.status}</td>
+        <td> {task.created_by}</td>
+        <td> {task.assigned_to}</td>
+        <td>
+          <Moment date={task.date_added} format="YYYY/MM/DD" />
+        </td>
+        <td> {task.due_date}</td>
+        <td>
+          <Button
+            size="sm"
+            color="danger"
+            onClick={() => this.remove(task.task_id)}
+          >
+            Delete
+          </Button>
+          {""}
+          <Button
+            size="sm"
+            color="danger"
+            onClick={() => this.edit(task.task_id)}
+          >
+            Edit
+          </Button>
+        </td>
+      </tr>
+    ));
 
-    render() {   
-				const {Tasks, isloading} = this.state;
-				
-        if(isloading)
-            return (<div> Loading...</div>);
+    return (
+      <div>
+        <AppNav />
 
-           
-						let rows =  
-						Tasks.map( task =>
-                <tr key={task.task_id}>
-                  <td> {task.title}</td>
-                  <td> {task.description}</td>
-                  <td> {task.category}</td>
-									<td> {task.priority}</td>
-                  <td> {task.status}</td>
-                  <td> {task.created_by}</td>
-                 	<td> {task.assigned_to}</td>
-									<td><Moment date={task.date_added} format="YYYY/MM/DD"/></td>
-                  <td> {task.due_date}</td>
-                  <td><Button size="sm" color="danger" onClick={() => this.remove(task.task_id)}>Delete</Button>
-											{''}
-											<Button size="sm" color="danger" onClick={() => this.edit(task.task_id)}>Edit</Button></td>
-
-                </tr>
-      
-      
-              )
-       
-
-        return ( 
-
-					<div>
-						 <AppNav/>
-
-						
-            {''}
-            <Container>
-              <h3>All tasks dashboard</h3>
-              <Table striped bordered hover size="sm">
-              <thead>
-                <tr>
-									<th width="10%">Title</th>
-                  <th width="30%">Description</th>
-                  <th> Category</th>
-									<th> Priority</th>
-									<th> Status</th>
-									<th> Created by</th>
-                  <th> Assigned to</th>
-                  <th> Date added</th>
-                  <th width="10%">Due date</th>
-									<th> Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                 {rows}
-              </tbody>
-
-              </Table>
-            </Container>
-		</div>
-			
-         );
-    }
+        {""}
+        <Container>
+          <h3>All tasks dashboard</h3>
+          <Table striped bordered hover size="sm">
+            <thead>
+              <tr>
+                <th width="10%">Title</th>
+                <th width="30%">Description</th>
+                <th> Category</th>
+                <th> Priority</th>
+                <th> Status</th>
+                <th> Created by</th>
+                <th> Assigned to</th>
+                <th> Date added</th>
+                <th width="10%">Due date</th>
+                <th> Action</th>
+              </tr>
+            </thead>
+            <tbody>{rows}</tbody>
+          </Table>
+        </Container>
+      </div>
+    );
+  }
 }
- 
-export default Task ;
+
+export default Task;
