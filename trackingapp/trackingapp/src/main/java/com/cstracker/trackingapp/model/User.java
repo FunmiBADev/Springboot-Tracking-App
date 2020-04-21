@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 
 @NoArgsConstructor
@@ -21,8 +22,14 @@ public class User {
     private String username;
     private String email;
     private String password;
+
+    @Transient
+    private String passwordConfirm;
+
     private boolean admin;
     private boolean scrum_master;
+    @ManyToMany
+    private Set<Role> roles;
 
     public void setFirstName(String first_name) {
         this.first_name = first_name;
@@ -35,4 +42,6 @@ public class User {
     public void setScrumMaster(boolean scrum_master) {
         this.scrum_master = scrum_master;
     }
+
 }
+

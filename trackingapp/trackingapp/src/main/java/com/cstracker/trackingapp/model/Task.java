@@ -39,10 +39,6 @@ public class Task {
     private User user;
 
 
-//    public void setDateadded(Instant add_date) {
-//        this.date_added = date_added;
-//    }
-
     public void setDueDate(String due_date) {
         this.due_date = due_date;
     }

@@ -46,7 +46,7 @@ public class TackController { // why is it "TackController"? (TaskController?)
     }
 
 
-    @PutMapping("/task /{task_id}")
+    @PutMapping("/task/{task_id}")
     ResponseEntity<Task> updateCategory(@Valid @RequestBody Task task){
         Task result= taskRepo.save(task);
         return ResponseEntity.ok().body(result);
