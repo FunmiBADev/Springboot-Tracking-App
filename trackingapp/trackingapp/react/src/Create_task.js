@@ -1,23 +1,70 @@
 import React, { Component } from "react";
 import AppNav from "./AppNav";
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import {Link} from 'react-router-dom';
+import { Container } from "reactstrap";
 
 class Cretae_task extends Component {
-  state = {
 
-  };
+//   {
+//     "task_id": 6,
+//     "title": "Test Create task",
+//     "description": "This method should send new tasks to db",
+//     "priority": "High",
+//     "category": "Userstory",
+//     "date_added": "2020-04-19T17:00:00Z",
+//     "status": "Not Started",
+//     "due_date": "2020-04-20T17:00:00.000Z",
+//     "created_by": "tester",
+//     "assigned_to": "tester",
+//     "user": null
+// }
+  emptyTask = {
+    task_id :'6',
+    title: "",
+    description: "",
+    priority: "",
+    category: "",
+    date_added: new Date(),
+    status: "",
+    due_date: "",
+    created_by: "",
+    assigned_to: "",
+    "user": null
+  }
+
+  constructor(props){
+    super(props)
+    this.state = {
+      isLoading : true,
+      tasks : [],
+      date : new Date(),
+      task: this.emptyTask,
+    }
+  }
+
+
+  async componentDidMount(){
+    const response = await fetch('/api/task')
+    const body = await response.json();
+    this.setState({tasks : body , isLoading : false})
+  }
 
   render() {
+    const title = <h3> Create new tasks</h3>
+    const {tasks, isLoading} = this.state
+
+    if (isLoading)
+      return(<div>Loading</div>)
+
     return (
       <div>
         <AppNav />
- <container>
+          <Container>
+            {title}
+          <container>
           <form>
-
           <Form.Group controlId="category">
               <Form.Label>Category</Form.Label>
               <Form.Control as="select" class="select-form-color" onChange={this.handleChange}>
@@ -60,16 +107,17 @@ class Cretae_task extends Component {
           </Form.Group>
 
           <Form.Group>
+            <Button variant="primary" type="submit" >Add Task</Button>{' '}
             <Button variant="danger" href="/dashboard" >Cancel</Button>{' '}
-            <Button variant="warning" type="reset" >Reset</Button>{' '}
-            <Button variant="primary" type="submit" >Add Task</Button>
+            <Button variant="warning" type="reset" >Reset</Button>
+            
           </Form.Group>
           
   
 
           </form>
         </container>
-
+        </Container>
       </div>
     );
   }
