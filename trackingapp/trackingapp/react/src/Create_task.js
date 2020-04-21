@@ -4,6 +4,9 @@ import 'react-datepicker/dist/react-datepicker.css'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import { Container } from "reactstrap";
+import { store } from 'react-notifications-component';
+import 'react-notifications-component/dist/theme.css';
+import 'animate.css';
 
 class Cretae_task extends Component {
 
@@ -85,7 +88,8 @@ handleDateChange(date){
     const {tasks, isLoading} = this.state
 
     if (isLoading)
-      return(<div>Loading</div>)
+      return(<div>Loading...</div>)
+      
 
     return (
       <div>
@@ -96,12 +100,14 @@ handleDateChange(date){
           <form onSubmit={this.handleSubmit}>
           <Form.Group controlId="category">
               <Form.Label>Category</Form.Label>
-              <Form.Control as="select" class="select-form-color" onChange={this.handleChange}>
+              <Form.Control as="select" class="select-form-color" name="category"placeholder="Select" onChange={this.handleChange}>
+              <option > </option>
               <option value="User story">User story</option>
               <option value="Bug">Bug</option>
               <option value="Issue">Issue</option>
               </Form.Control>
           </Form.Group>
+
           
           <Form.Group controlId="title">
             <Form.Label>Title</Form.Label>
@@ -115,19 +121,20 @@ handleDateChange(date){
                onChange={this.handleChange} />
           </Form.Group>
 
-          <Form.Group controlId="category">
+          <Form.Group controlId="priority">
               <Form.Label>Priority</Form.Label>
-              <Form.Control as="select" class="select-form-color" onChange={this.handleChange}>
+              <Form.Control as="select" class="select-form-color" name="priority" placeholder="Select" onChange={this.handleChange}>
+                <option  > </option>
                 <option value="High">High</option>
                 <option value="Medium">Medium</option>
                 <option value="Low">Low</option>
               </Form.Control>
           </Form.Group>
 
-          <Form.Group controlId="due_date">
+          {/* <Form.Group controlId="due_date">
             <Form.Label>Due Date</Form.Label>
             <Form.Control type="date" name="due_date" onChange={this.handleDateChange} />
-          </Form.Group>
+          </Form.Group> */}
 
           <Form.Group controlId="assign">
             <Form.Label>Assigned To</Form.Label>
@@ -137,13 +144,15 @@ handleDateChange(date){
 
 
           <Form.Group>
-            <Button variant="primary" type="submit" >Add Task</Button>{' '}
+            <Button variant="primary" type="submit" 
+               > Add Task</Button>{' '}
+
+
             <Button variant="danger" href="/dashboard" >Cancel</Button>{' '}
             <Button variant="warning" type="reset" >Reset</Button>
             
           </Form.Group>
-          
-  
+      
 
           </form>
         </container>

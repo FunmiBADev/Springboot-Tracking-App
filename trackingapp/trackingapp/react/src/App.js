@@ -7,6 +7,7 @@ import Task from "./Task";
 import Home from "./Home";
 import My_dashboard from "./My_dashboard";
 import Create_task from "./Create_task";
+import EditTaskForm from "./EditTaskForm";
 
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
           <Route path="/dashboard" exact={true} component={Task} />
           <Route path="/create_task" exact={true} component={Create_task} />
           <Route path="/my_dashboard" exact={true} component={My_dashboard} />
+          <Route path="/edittaskform" exact={true} component={EditTaskForm} />
         </Switch>
       </Router>
     );

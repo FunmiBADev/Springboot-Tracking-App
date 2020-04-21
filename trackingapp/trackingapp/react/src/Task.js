@@ -1,13 +1,10 @@
 import React, { Component } from "react";
 import Table from "react-bootstrap/Table";
-// import { Table,Container,Input,Button,Label, FormGroup, Form} from 'reactstrap';
 import { Container, Button } from "reactstrap";
 import Moment from "react-moment";
 import AppNav from "./AppNav";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
 import "./App.css";
-import { Link } from "react-router-dom";
+
 
 class Task extends Component {
   //state internal/private storage of components
@@ -31,6 +28,10 @@ class Task extends Component {
 
 }
 
+editTask(task_id) {
+  window.localStorage.setItem("TaskId", task_id);
+  this.props.history.push('/edittaskform');
+}
   // in charge of processing the js file and return as the export in the last line
 
   // sync : send request and wait for response
@@ -74,7 +75,7 @@ class Task extends Component {
           <Button
             size="sm"
             color="info"
-            onClick={() => this.edit(task.task_id)}
+            onClick={() => this.editTask(task.task_id)}
           >
             Edit
           </Button>
@@ -113,3 +114,4 @@ class Task extends Component {
 }
 
 export default Task;
+ 
