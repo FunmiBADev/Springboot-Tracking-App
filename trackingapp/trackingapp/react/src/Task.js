@@ -16,6 +16,21 @@ class Task extends Component {
     Tasks: [],
   };
 
+  async remove(task_id){
+    await fetch(`/api/task/${task_id}` , {
+      method: 'DELETE' ,
+      headers : {
+        'Accept' : 'application/json',
+        'Content-Type' : 'application/json'
+      }
+
+    }).then(() => {
+      let updatedTasks = [...this.state.Tasks].filter(i => i.task_id !== task_id);
+      this.setState({Tasks : updatedTasks});
+    });
+
+}
+
   // in charge of processing the js file and return as the export in the last line
 
   // sync : send request and wait for response
@@ -58,7 +73,7 @@ class Task extends Component {
           {""}
           <Button
             size="sm"
-            color="danger"
+            color="info"
             onClick={() => this.edit(task.task_id)}
           >
             Edit
@@ -79,14 +94,14 @@ class Task extends Component {
               <tr>
                 <th width="10%">Title</th>
                 <th width="30%">Description</th>
-                <th> Category</th>
-                <th> Priority</th>
-                <th> Status</th>
-                <th> Created by</th>
-                <th> Assigned to</th>
-                <th> Date added</th>
+                <th width="10%"> Category</th>
+                <th width="10%"> Priority</th>
+                <th width="10%"> Status</th>
+                <th width="10%"> Created by</th>
+                <th width="10%"> Assigned to</th>
+                <th width="10%"> Date added</th>
                 <th width="10%">Due date</th>
-                <th> Action</th>
+                <th width="10%"> Action</th>
               </tr>
             </thead>
             <tbody>{rows}</tbody>
