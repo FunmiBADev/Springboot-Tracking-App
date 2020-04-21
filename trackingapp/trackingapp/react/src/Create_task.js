@@ -42,11 +42,31 @@ class Cretae_task extends Component {
       date : new Date(),
       task: this.emptyTask,
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  async handleSubmit(event){
+     
+    const task = this.state.task;
+  
+
+    await fetch('/api/task', {
+      method : 'POST',
+      headers : {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body : JSON.stringify(task),
+    });
+    
+    event.preventDefault();
+    this.props.history.push("/task");
   }
 
 
+
   async componentDidMount(){
-    const response = await fetch('/api/task')
+    const response = await fetch('/api/dashboard')
     const body = await response.json();
     this.setState({tasks : body , isLoading : false})
   }
@@ -67,7 +87,7 @@ class Cretae_task extends Component {
           <form>
           <Form.Group controlId="category">
               <Form.Label>Category</Form.Label>
-              <Form.Control as="select" class="select-form-color" onChange={this.handleChange}>
+              <Form.Control as="select" class="select-form-color" onChange={this.handleSubmit}>
               <option value="User story">User story</option>
               <option value="Bug">Bug</option>
               <option value="Issue">Issue</option>
@@ -97,7 +117,7 @@ class Cretae_task extends Component {
 
           <Form.Group controlId="due_date">
             <Form.Label>Due Date</Form.Label>
-            <Form.Control type="date" name="due_date" onChange={this.handleChange} />
+            <Form.Control type="date" name="due_date" onChange={this.handleDateChange} />
           </Form.Group>
 
           <Form.Group controlId="assign">
