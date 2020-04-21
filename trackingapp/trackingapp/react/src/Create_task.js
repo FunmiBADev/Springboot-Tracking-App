@@ -7,19 +7,6 @@ import { Container } from "reactstrap";
 
 class Cretae_task extends Component {
 
-//   {
-//     "task_id": 6,
-//     "title": "Test Create task",
-//     "description": "This method should send new tasks to db",
-//     "priority": "High",
-//     "category": "Userstory",
-//     "date_added": "2020-04-19T17:00:00Z",
-//     "status": "Not Started",
-//     "due_date": "2020-04-20T17:00:00.000Z",
-//     "created_by": "tester",
-//     "assigned_to": "tester",
-//     "user": null
-// }
   emptyTask = {
     task_id :'6',
     title: "",
@@ -43,6 +30,8 @@ class Cretae_task extends Component {
       task: this.emptyTask,
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange= this.handleChange.bind(this);
+    this.handleDateChange= this.handleDateChange.bind(this);
   }
 
   async handleSubmit(event){
@@ -62,7 +51,22 @@ class Cretae_task extends Component {
     event.preventDefault();
     this.props.history.push("/task");
   }
+  handleChange(event){
+    const target= event.target;
+    const value= target.value;
+    const name = target.name;
+    let task={...this.state.task};
+    task[name] = value;
+    this.setState({task});
+    console.log(task);
+}
 
+handleDateChange(date){
+  let task={...this.state.task};
+  task.due_date= date;
+  this.setState({task});
+
+}
 
 
   async componentDidMount(){
@@ -70,6 +74,11 @@ class Cretae_task extends Component {
     const body = await response.json();
     this.setState({tasks : body , isLoading : false})
   }
+
+
+
+
+
 
   render() {
     const title = <h3> Create new tasks</h3>
@@ -84,10 +93,10 @@ class Cretae_task extends Component {
           <Container>
             {title}
           <container>
-          <form>
+          <form onSubmit={this.handleSubmit}>
           <Form.Group controlId="category">
               <Form.Label>Category</Form.Label>
-              <Form.Control as="select" class="select-form-color" onChange={this.handleSubmit}>
+              <Form.Control as="select" class="select-form-color" onChange={this.handleChange}>
               <option value="User story">User story</option>
               <option value="Bug">Bug</option>
               <option value="Issue">Issue</option>
@@ -126,6 +135,7 @@ class Cretae_task extends Component {
              onChange={this.handleChange} />
           </Form.Group>
 
+
           <Form.Group>
             <Button variant="primary" type="submit" >Add Task</Button>{' '}
             <Button variant="danger" href="/dashboard" >Cancel</Button>{' '}
@@ -138,6 +148,7 @@ class Cretae_task extends Component {
           </form>
         </container>
         </Container>
+        
       </div>
     );
   }
