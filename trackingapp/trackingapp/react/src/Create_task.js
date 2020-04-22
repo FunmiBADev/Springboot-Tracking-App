@@ -11,7 +11,7 @@ import 'animate.css';
 class Cretae_task extends Component {
 
   emptyTask = {
-    task_id :'6',
+    task_id :'',
     title: "",
     description: "",
     priority: "",
