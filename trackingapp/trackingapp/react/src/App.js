@@ -8,6 +8,7 @@ import Home from "./Home";
 import My_dashboard from "./My_dashboard";
 import Create_task from "./Create_task";
 import EditTaskForm from "./EditTaskForm";
+import Login from "./Login";
 
 
 class App extends Component {
@@ -16,11 +17,12 @@ class App extends Component {
     return (
       <Router>
         <Switch>
-          <Route path="/" exact={true} component={Home} />
+          <Route path="/home" exact={true} component={Home} />
           <Route path="/dashboard" exact={true} component={Task} />
           <Route path="/create_task" exact={true} component={Create_task} />
           <Route path="/my_dashboard" exact={true} component={My_dashboard} />
           <Route path="/edittaskform" exact={true} component={EditTaskForm} />
+          <Route path="/" exact={true} component={Login} />
         </Switch>
       </Router>
     );

@@ -29,7 +29,7 @@ public class Task {
    
     private String status;
    
-    private String due_date;
+    private Instant due_date;
   
     private String created_by;
     
@@ -39,7 +39,7 @@ public class Task {
     private User user;
 
 
-    public void setDueDate(String due_date) {
+    public void setDueDate(Instant due_date) {
         this.due_date = due_date;
     }
 

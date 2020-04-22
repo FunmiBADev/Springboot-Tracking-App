@@ -30,11 +30,11 @@ public class TrackingappApplication {
 					"High","Userstory","2020-03-29T17:00:00.000Z","Not Started",
 					"2020-03-30T17:00:00.000Z","ctester","atester");
 			User user1 = createUser(userRepo,"Funmi", "Tester", "ftester",
-					"ftester@email.com","test123", true, false );
+					"ftester@email.com","test1234", true, false );
 			User user2 = createUser(userRepo,"Chloe", "Tester2", "ctester",
-					"ctester@email.com","test234", true, true );
+					"ctester@email.com","test2345", true, true );
 			User user3 = createUser(userRepo,"Ariane", "Tester3", "atester",
-					"atester@email.com","test345", true, false );
+					"atester@email.com","test3456", true, false );
 		};
 	}
 
@@ -57,6 +57,7 @@ public class TrackingappApplication {
 							String category, String date_added, String status, String due_date, String created_by,
 							String assigned_to) {
 		Instant add_date = Instant.parse(date_added);
+		Instant due = Instant.parse(due_date);
 		Task task = new Task();
 
 		task.setTitle(title);
@@ -65,7 +66,7 @@ public class TrackingappApplication {
 		task.setCategory(category);
 		task.setDate_added(add_date);
 		task.setStatus(status);
-		task.setDueDate(due_date);
+		task.setDueDate(due);
 		task.setCreatedBy(created_by);
 		task.setAssignedTo(assigned_to);
 
