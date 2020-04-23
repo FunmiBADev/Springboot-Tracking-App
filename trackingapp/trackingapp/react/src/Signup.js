@@ -25,8 +25,8 @@ class Signup extends Component {
     super(props)
     this.state = {
       isLoading : true,
-      signup : [],
-      signup: this.emptyLogin,
+      signups : [],
+      signup: this.emptySignup,
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange= this.handleChange.bind(this);
@@ -68,7 +68,7 @@ class Signup extends Component {
 
 
   render() {
-    const title = <h3> Create new account</h3>
+    const title = <h3> Sign Up</h3>
     const {login, isLoading} = this.state
 
     if (isLoading)
@@ -112,7 +112,7 @@ class Signup extends Component {
                > Sign Up</Button>{' '}
 
 
-            <Button variant="danger" href="/" >Cancel</Button>{' '}
+            <Button variant="success" href="/" >Login</Button>{' '}
             
           </Form.Group>
       
