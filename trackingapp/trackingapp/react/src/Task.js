@@ -4,6 +4,7 @@ import { Container, Button } from "reactstrap";
 import Moment from "react-moment";
 import AppNav from "./AppNav";
 import "./App.css";
+import Footer from "./Footer";
 
 
 class Task extends Component {
@@ -57,24 +58,23 @@ editTask(task_id) {
         <td> {task.category}</td>
         <td> {task.priority}</td>
         <td> {task.status}</td>
-        <td> {task.created_by}</td>
         <td> {task.assigned_to}</td>
         <td>
           <Moment date={task.date_added} format="YYYY/MM/DD" />
         </td>
         <td> {task.due_date}</td>
         <td>
-          <Button
+          <Button className="edit-button"
             size="sm"
-            color="danger"
+            color="outline-danger"
             onClick={() => this.remove(task.task_id)}
           >
             Delete
           </Button>
           {""}
-          <Button
+          <Button className="edit-button"
             size="sm"
-            color="info"
+            color="outline-warning"
             onClick={() => this.editTask(task.task_id)}
           >
             Edit
@@ -84,24 +84,23 @@ editTask(task_id) {
     ));
 
     return (
-      <div>
+      <div className="font">
         <AppNav />
-
+        <Footer/>
         {""}
         <Container>
           <h3>All tasks dashboard</h3>
-          <Table striped bordered hover size="sm">
+          <Table responsive>
             <thead>
               <tr>
                 <th width="10%">Title</th>
                 <th width="30%">Description</th>
                 <th width="10%"> Category</th>
-                <th width="10%"> Priority</th>
+                <th width="5%"> Priority</th>
                 <th width="10%"> Status</th>
-                <th width="10%"> Created by</th>
-                <th width="10%"> Assigned to</th>
+                <th width="15%"> Assigned to</th>
                 <th width="10%"> Date added</th>
-                <th width="10%">Due date</th>
+                <th width="15%">Due date</th>
                 <th width="10%"> Action</th>
               </tr>
             </thead>

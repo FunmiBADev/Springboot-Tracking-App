@@ -1,9 +1,10 @@
 .App {
   text-align: center;
 }
-.container, .container-fluid {
+.container,
+.container-fluid {
   margin: 20px;
-}  
+}
 
 .App-logo {
   height: 40vmin;
@@ -19,11 +20,79 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  font-family: "Raleway", sans-serif;
   color: white;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.wrapper-login {
+  display: flex;
+  flex-direction: row;
+  height: max-content;
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  justify-content: space-around;
+}
+
+.wrapper-login-input-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.wrapper-login-input-group .input-box {
+  width: 150px;
+}
+
+.login-page-font {
+  font-size: 200px;
+}
+
+.signup-form {
+  width:30% !important;
+  font-family: 'Comfortaa', cursive;
+}
+
+.edit-button {
+  width: -webkit-fill-available !important;
+}
+
+.task-table{
+  width: 85%;
+}
+
+.font{
+  /* font-family: 'Comfortaa', cursive; */
+  font-family: 'Raleway', sans-serif;
+}
+
+footer {
+  background-color: light;
+  color: black;
+  font-size: 14px;
+  bottom: 0;
+  position: fixed;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 999;
+}
+
+footer p {
+  margin: 10px 0;
+}
+
+footer i {
+  color: black;
+}
+
+footer a {
+  color:white;
+  text-decoration: none;
 }
 
 @keyframes App-logo-spin {

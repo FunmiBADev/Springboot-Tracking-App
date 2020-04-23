@@ -7,6 +7,7 @@ import { Container } from "reactstrap";
 import { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
+import Footer from "./Footer";
 
 class Signup extends Component {
 
@@ -78,9 +79,10 @@ class Signup extends Component {
     return (
       <div>
         <AppNav />
-          <Container>
+				<Footer/>
+          <Container className="signup-form">
             {title}
-          <Container>
+         
           <form onSubmit={this.handleSubmit}>
           <Form.Group controlId="first_name">
             <Form.Label>First name</Form.Label>
@@ -108,17 +110,17 @@ class Signup extends Component {
           </Form.Group>
 
           <Form.Group>
-            <Button variant="primary" type="submit" 
+            <Button variant="outline-dark" type="submit" 
                > Sign Up</Button>{' '}
 
 
-            <Button variant="success" href="/" >Login</Button>{' '}
+            <Button variant="outline-dark" href="/" >Login</Button>{' '}
             
           </Form.Group>
       
 
           </form>
-        </Container>
+    
         </Container>
         
       </div>

@@ -10,6 +10,11 @@ import Create_task from "./Create_task";
 import EditTaskForm from "./EditTaskForm";
 import Signup from "./Signup";
 import NotFound from "./NotFound";
+import Footer from "./Footer";
+import Developer from "./Developer";
+import Find_category from "./Find_category";
+import Find_priority from "./Find_priority";
+import Find_status from "./Find_status";
 
 
 class App extends Component {
@@ -24,6 +29,10 @@ class App extends Component {
           <Route path="/my_dashboard" exact={true} component={My_dashboard} />
           <Route path="/edittaskform" exact={true} component={EditTaskForm} />
           <Route path="/signup" exact={true} component={Signup} />
+          <Route path="/developer" exact={true} component={Developer} />
+          <Route path='/find_category' exact={true} component ={Find_category} />
+          <Route path='/find_priority' exact={true} component ={Find_priority} />
+          <Route path='/find_status' exact={true} component ={Find_status} />
           <Route path='/404' exact={true} component ={NotFound} />
           <Redirect from='*' to="/404" />
         </Switch>

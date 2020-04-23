@@ -8,6 +8,7 @@ import { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
 import ReactDatePicker from "react-datepicker";
+import Footer from "./Footer";
 
 class Cretae_task extends Component {
 
@@ -19,7 +20,7 @@ class Cretae_task extends Component {
     category: "",
     date_added: new Date(),
     status: "",
-    due_date: new Date,
+    due_date: new Date(),
     created_by: "",
     assigned_to: "",
     "user": null
@@ -93,8 +94,9 @@ handleDateChange(date){
       
 
     return (
-      <div>
+      <div className="font">
         <AppNav />
+        <Footer/>
           <Container>
             {title}
           <container>
@@ -132,26 +134,44 @@ handleDateChange(date){
               </Form.Control>
           </Form.Group>
 
+          <Form.Group controlId="status">
+              <Form.Label>Status</Form.Label>
+              <Form.Control as="select" class="select-form-color" name="status" placeholder="Select" onChange={this.handleChange}>
+                <option  > </option>
+                <option value="Not Startedd">Not Started</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Blocker">Blocker</option>
+                <option value="Code Review">Code Review</option>
+                <option value="Complete">Complete</option>
+              </Form.Control>
+          </Form.Group>
+
+            <Form.Group controlId="assigned_to">
+            <Form.Label>Assigned To</Form.Label>
+            <Form.Control as="select" class="select-form-color" name="assigned_to" placeholder="Select" onChange={this.handleChange}>
+                <option  > </option>
+                <option value="Ariane">Ariane</option>
+                <option value="Chloe">Chloe</option>
+                <option value="Funmi">Funmi</option>
+                <option value="Jason">Jason</option>
+                <option value="Ade">Ade</option>
+              </Form.Control>
+          </Form.Group>
+
           <Form.Group controlId="due_date">
             <Form.Label>Due Date</Form.Label>
             <ReactDatePicker name="due_date" selected={this.state.task.due_date}
             onChange={this.handleDateChange} />
           </Form.Group>
 
-          <Form.Group controlId="assign">
-            <Form.Label>Assigned To</Form.Label>
-            <Form.Control type="text" name="assign" placeholder="Only assign tasks if authorised" 
-             onChange={this.handleChange} />
-          </Form.Group>
-
 
           <Form.Group>
-            <Button variant="primary" type="submit" 
+            <Button variant="outline-dark" type="submit" 
                > Add Task</Button>{' '}
 
 
-            <Button variant="danger" href="/dashboard" >Cancel</Button>{' '}
-            <Button variant="warning" type="reset" >Reset</Button>
+            <Button variant="outline-danger" href="/dashboard" >Cancel</Button>{' '}
+            <Button variant="outline-warning" type="reset" >Reset</Button>
             
           </Form.Group>
       
