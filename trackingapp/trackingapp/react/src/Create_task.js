@@ -7,6 +7,7 @@ import { Container } from "reactstrap";
 import { store } from 'react-notifications-component';
 import 'react-notifications-component/dist/theme.css';
 import 'animate.css';
+import ReactDatePicker from "react-datepicker";
 
 class Cretae_task extends Component {
 
@@ -18,7 +19,7 @@ class Cretae_task extends Component {
     category: "",
     date_added: new Date(),
     status: "",
-    due_date: "",
+    due_date: new Date,
     created_by: "",
     assigned_to: "",
     "user": null
@@ -131,10 +132,11 @@ handleDateChange(date){
               </Form.Control>
           </Form.Group>
 
-          {/* <Form.Group controlId="due_date">
+          <Form.Group controlId="due_date">
             <Form.Label>Due Date</Form.Label>
-            <Form.Control type="date" name="due_date" onChange={this.handleDateChange} />
-          </Form.Group> */}
+            <ReactDatePicker name="due_date" selected={this.state.task.due_date}
+            onChange={this.handleDateChange} />
+          </Form.Group>
 
           <Form.Group controlId="assign">
             <Form.Label>Assigned To</Form.Label>
