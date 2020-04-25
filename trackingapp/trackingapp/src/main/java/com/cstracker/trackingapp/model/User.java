@@ -28,20 +28,8 @@ public class User {
 
     private boolean admin;
     private boolean scrum_master;
-    @ManyToMany
-    private Set<Role> roles;
 
-    public void setFirstName(String first_name) {
-        this.first_name = first_name;
-    }
 
-    public void setLastName(String last_name) {
-        this.last_name = last_name;
-    }
-
-    public void setScrumMaster(boolean scrum_master) {
-        this.scrum_master = scrum_master;
-    }
 
 }
 

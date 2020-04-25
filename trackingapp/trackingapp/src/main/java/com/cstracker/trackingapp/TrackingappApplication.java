@@ -42,13 +42,13 @@ public class TrackingappApplication {
 							String password, boolean admin, boolean scrum_master) {
 		User user = new User();
 
-		user.setFirstName(first_name);
-		user.setLastName(last_name);
+		user.setFirst_name(first_name);
+		user.setLast_name(last_name);
 		user.setUsername(username);
 		user.setEmail(email);
 		user.setPassword(password);
 		user.setAdmin(admin);
-		user.setScrumMaster(scrum_master);
+		user.setScrum_master(scrum_master);
 
 		return userRepo.save(user);
 	}
